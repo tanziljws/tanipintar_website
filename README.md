@@ -1,19 +1,51 @@
-# TaniPintar
+# 🌾 TaniPintar - SmartFarm Connect
 
-![SmartFarm Connect Logo](./src/assets/images/logo.svg)
+<div align="center">
+  
+![SmartFarm Connect Logo](C:\Project\bia-smartfarm-web\src\assets\images\logo.png)
 
-SmartFarm Connect adalah platform inovatif yang menghubungkan petani dengan masyarakat umum, pembeli, dan pemerintah untuk membangun ekosistem pertanian yang lebih baik dan berkelanjutan.
+### 🚀 Membangun Masa Depan Pertanian Indonesia
 
-## Deskripsi Proyek
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/OwlDane/TaniPintar-web)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![React](https://img.shields.io/badge/React-18.x-61DAFB.svg)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-14.x-339933.svg)](https://nodejs.org/)
 
-SmartFarm Connect bertujuan untuk menjadi jembatan antara petani dan masyarakat demi ketahanan pangan. Aplikasi ini menyediakan berbagai fitur untuk menghubungkan petani dan masyarakat, termasuk:
+---
 
-- **Pemetaan Petani**: Temukan lokasi petani terdekat dengan mudah melalui peta interaktif.
-- **Informasi Komoditas**: Akses informasi lengkap tentang berbagai komoditas pertanian yang tersedia.
-- **Koneksi Langsung**: Hubungi petani secara langsung untuk memenuhi kebutuhan hasil pertanian Anda.
-- **Edukasi Pertanian**: Dapatkan informasi dan pengetahuan terbaru tentang praktik pertanian modern.
+TaniPintar adalah platform inovatif yang memadukan teknologi modern dengan kearifan pertanian lokal. Kami menghubungkan petani, pembeli, dan pemangku kepentingan dalam satu ekosistem digital yang terintegrasi untuk membangun masa depan pertanian Indonesia yang lebih baik dan berkelanjutan.
 
-## Struktur Halaman
+[🌐 Website](https://tanipintar.id) • [📚 Dokumentasi](docs/) • [🤝 Kontribusi](CONTRIBUTING.md) • [📫 Kontak](mailto:info@tanipintar.id)
+
+</div>
+
+## ✨ Fitur Unggulan
+
+### 🗺️ Pemetaan Interaktif
+- **Smart Mapping**: Visualisasi lokasi petani dengan peta interaktif Leaflet.js
+- **Filter Pintar**: Pencarian berdasarkan komoditas, jarak, dan status panen
+- **Profil Detail**: Informasi lengkap setiap petani termasuk rating dan ulasan
+- **Statistik Real-time**: Data sebaran petani dan komoditas terupdate
+
+### 📱 Panel Admin
+- **Dashboard Intuitif**: Monitoring aktivitas platform secara real-time
+- **Manajemen Konten**: Kelola artikel edukasi dan informasi pertanian
+- **Data Analytics**: Insight pertanian berbasis data
+- **User Management**: Kelola akses dan peran pengguna
+
+### 🌾 Manajemen Komoditas
+- **Katalog Digital**: Informasi detail setiap komoditas pertanian
+- **Update Status**: Pembaruan status panen secara real-time
+- **Sistem Kategori**: Pengelompokan produk (organik/non-organik)
+- **Harga Dinamis**: Informasi harga pasar terkini
+
+### 👨‍🌾 Fitur Edukasi
+- **Learning Center**: Pusat pembelajaran pertanian modern
+- **Video Tutorial**: Panduan visual teknik bertani
+- **Forum Diskusi**: Ruang berbagi pengalaman antar petani
+- **Resource Center**: Perpustakaan digital pertanian
+
+## 🛠️ Tech Stack
 
 1. **Beranda (Home)**
    - Banner besar dengan tagline dan ilustrasi pertanian pintar
@@ -34,14 +66,23 @@ SmartFarm Connect bertujuan untuk menjadi jembatan antara petani dan masyarakat 
    - Informasi kontak alternatif
    - FAQ
 
-## Teknologi yang Digunakan
+### 🎯 Teknologi Frontend
+- **React 18.x**: Framework JavaScript modern untuk UI yang responsif
+- **Tailwind CSS**: Utility-first CSS framework untuk desain modern
+- **React Router 6**: Manajemen routing yang powerful
+- **Leaflet.js**: Library peta interaktif untuk visualisasi data
+- **Redux Toolkit**: State management yang efisien
+- **React Query**: Data fetching & caching
 
-- **React**: Library JavaScript untuk membangun antarmuka pengguna
-- **React Router**: Untuk navigasi antar halaman
-- **Tailwind CSS**: Framework CSS untuk styling
-- **Leaflet.js**: Library untuk peta interaktif
+### 🔧 Teknologi Backend
+- **Node.js**: Runtime environment JavaScript
+- **Express.js**: Web framework yang cepat dan minimalis
+- **MariaDB**: Database SQL yang powerful
+- **JWT**: Autentikasi dan otorisasi yang aman
+- **Socket.io**: Komunikasi real-time
+- **Multer**: Upload file handling
 
-## Cara Menjalankan Proyek
+## ⚡ Cara Menjalankan Proyek
 
 ### Prasyarat
 
