@@ -2,7 +2,7 @@
 
 <div align="center">
   
-![SmartFarm Connect Logo](C:\Project\bia-smartfarm-web\src\assets\images\logo.png)
+![SmartFarm Connect Logo](bia-smartfarm-web/src/assets/images/logo.png)
 
 ### 🚀 Membangun Masa Depan Pertanian Indonesia
 
@@ -93,8 +93,8 @@ TaniPintar adalah platform inovatif yang memadukan teknologi modern dengan keari
 
 1. Clone repositori ini
    ```
-   git clone https://github.com/username/smartfarm-connect.git
-   cd smartfarm-connect
+   git clone https://github.com/username/TaniPintar-web.git
+   cd TaniPintar-web
    ```
 
 2. Install dependensi
