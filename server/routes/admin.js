@@ -1,9 +1,98 @@
 const express = require('express');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const auth = require('../middleware/auth');
 const router = express.Router();
 const pool = require('../db');
+
+// Get all farmers
+router.get('/farmers', auth, async (req, res) => {
+    try {
+        const result = await pool.query(
+            'SELECT * FROM farmers ORDER BY created_at DESC'
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Create new farmer
+router.post('/farmers', auth, async (req, res) => {
+    try {
+        const {
+            name,
+            district,
+            commodity_name,
+            commodity_type,
+            contact,
+            location,
+            latitude,
+            longitude,
+            status
+        } = req.body;
+
+        const result = await pool.query(
+            'INSERT INTO farmers (name, district, commodity_name, commodity_type, contact, location, latitude, longitude, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
+            [name, district, commodity_name, commodity_type, contact, location, latitude, longitude, status]
+        );
+
+        res.status(201).json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Update farmer
+router.put('/farmers/:id', auth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const {
+            name,
+            district,
+            commodity_name,
+            commodity_type,
+            contact,
+            location,
+            latitude,
+            longitude,
+            status
+        } = req.body;
+
+        const result = await pool.query(
+            'UPDATE farmers SET name = $1, district = $2, commodity_name = $3, commodity_type = $4, contact = $5, location = $6, latitude = $7, longitude = $8, status = $9, updated_at = CURRENT_TIMESTAMP WHERE id = $10 RETURNING *',
+            [name, district, commodity_name, commodity_type, contact, location, latitude, longitude, status, id]
+        );
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Farmer not found' });
+        }
+
+        res.json(result.rows[0]);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+// Delete farmer
+router.delete('/farmers/:id', auth, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query('DELETE FROM farmers WHERE id = $1 RETURNING *', [id]);
+
+        if (result.rows.length === 0) {
+            return res.status(404).json({ message: 'Farmer not found' });
+        }
+
+        res.json({ message: 'Farmer deleted successfully' });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
 
 // Admin login
 router.post('/login', async (req, res) => {
@@ -11,12 +100,12 @@ router.post('/login', async (req, res) => {
         const { username, password } = req.body;
         
         // Get user from database
-        const [rows] = await pool.query(
-            'SELECT * FROM admin_users WHERE username = ?',
+        const result = await pool.query(
+            'SELECT * FROM admin_users WHERE username = $1',
             [username]
         );
 
-        const user = rows[0];
+        const user = result.rows[0];
         if (!user) {
             return res.status(401).json({ error: 'Invalid credentials' });
         }

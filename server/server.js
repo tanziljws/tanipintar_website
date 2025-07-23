@@ -24,17 +24,26 @@ app.get('/api/test', (req, res) => {
 
 // Routes
 app.use('/api/admin', adminRoutes);
+app.use('/api/education', require('./routes/education'));
+app.use('/api/education', require('./routes/education'));
 
 // Test database connection
-pool.query('SELECT 1')
-  .then(() => {
-    console.log('Connected to MariaDB database');
-    // Start server after successful database connection
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
-  })
-  .catch(err => console.error('Database connection error:', err));
+const startServer = async () => {
+    try {
+        const client = await pool.connect();
+        console.log('Connected to PostgreSQL database');
+        client.release();
+        
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
+        });
+    } catch (err) {
+        console.error('Database connection error:', err);
+        process.exit(1); // Exit if we can't connect to the database
+    }
+};
+
+startServer();
 
 // List all tables in the database for debugging
 app.get('/api/tables', async (req, res) => {

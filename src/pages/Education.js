@@ -20,12 +20,15 @@ const Education = () => {
       { threshold: 0.1 }
     );
     
-    if (headerRef.current) observer.observe(headerRef.current);
-    if (contentRef.current) observer.observe(contentRef.current);
+    const headerElement = headerRef.current;
+    const contentElement = contentRef.current;
+    
+    if (headerElement) observer.observe(headerElement);
+    if (contentElement) observer.observe(contentElement);
     
     return () => {
-      if (headerRef.current) observer.unobserve(headerRef.current);
-      if (contentRef.current) observer.unobserve(contentRef.current);
+      if (headerElement) observer.unobserve(headerElement);
+      if (contentElement) observer.unobserve(contentElement);
     };
   }, []);
   
@@ -37,99 +40,28 @@ const Education = () => {
     return () => clearTimeout(timer);
   }, []);
   
-  // Educational content data
-  const educationalContent = [
-    {
-      id: 1,
-      title: 'Teknik Menanam Padi yang Efisien',
-      category: 'farming',
-      description: 'Panduan lengkap tentang teknik menanam padi yang efisien untuk meningkatkan hasil panen hingga 30%.',
-      image: 'https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1932&q=80',
-      date: '2025-04-15',
-      author: 'Dr. Budi Santoso',
-      readTime: '8 menit',
-      featured: true
-    },
-    {
-      id: 2,
-      title: 'Pertanian Organik: Langkah Demi Langkah',
-      category: 'sustainable',
-      description: 'Panduan praktis untuk memulai dan mengelola pertanian organik yang berkelanjutan dan ramah lingkungan.',
-      image: 'https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-04-10',
-      author: 'Ani Wijaya, M.Sc',
-      readTime: '12 menit',
-      featured: true
-    },
-    {
-      id: 3,
-      title: 'Analisis Pasar Komoditas Pangan 2025',
-      category: 'market',
-      description: 'Laporan mendalam tentang tren pasar komoditas pangan di Indonesia dan peluang ekspor untuk petani lokal.',
-      image: 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-04-05',
-      author: 'Tim Riset TaniPintar',
-      readTime: '15 menit',
-      featured: false
-    },
-    {
-      id: 4,
-      title: 'Cara Menggunakan Sistem Irigasi Tetes',
-      category: 'video',
-      description: 'Video tutorial tentang cara memasang dan mengoptimalkan sistem irigasi tetes untuk menghemat air.',
-      image: 'https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-03-28',
-      author: 'Ir. Dedi Kurniawan',
-      readTime: '10 menit video',
-      featured: false,
-      isVideo: true
-    },
-    {
-      id: 5,
-      title: 'Pengendalian Hama Terpadu pada Tanaman Cabai',
-      category: 'farming',
-      description: 'Strategi efektif untuk mengendalikan hama pada tanaman cabai tanpa mengandalkan pestisida kimia berlebihan.',
-      image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-03-22',
-      author: 'Dr. Siti Rahayu',
-      readTime: '9 menit',
-      featured: false
-    },
-    {
-      id: 6,
-      title: 'Konservasi Air dalam Pertanian Kering',
-      category: 'sustainable',
-      description: 'Teknik konservasi air untuk pertanian di daerah dengan curah hujan rendah dan akses air terbatas.',
-      image: 'https://images.unsplash.com/photo-1560493676-04071c5f467b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-03-18',
-      author: 'Joko Widodo, M.Sc',
-      readTime: '7 menit',
-      featured: false
-    },
-    {
-      id: 7,
-      title: 'Peluang Ekspor Buah Tropis Indonesia',
-      category: 'market',
-      description: 'Analisis peluang pasar ekspor untuk buah-buahan tropis Indonesia ke negara-negara Asia Timur dan Eropa.',
-      image: 'https://images.unsplash.com/photo-1546548970-71785318a17b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-03-12',
-      author: 'Tim Riset TaniPintar',
-      readTime: '11 menit',
-      featured: false
-    },
-    {
-      id: 8,
-      title: 'Cara Membuat Pupuk Kompos dari Limbah Pertanian',
-      category: 'video',
-      description: 'Video tutorial langkah demi langkah untuk mengubah limbah pertanian menjadi pupuk kompos berkualitas tinggi.',
-      image: 'https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
-      date: '2025-03-05',
-      author: 'Ir. Bambang Sutrisno',
-      readTime: '15 menit video',
-      featured: false,
-      isVideo: true
-    }
-  ];
+  // State for education content
+  const [educationalContent, setEducationalContent] = useState([]);
+
+  // Fetch education content
+  useEffect(() => {
+    const fetchEducationContent = async () => {
+      try {
+        const response = await fetch('http://localhost:3001/api/education');
+        if (!response.ok) {
+          throw new Error('Failed to fetch education content');
+        }
+        const data = await response.json();
+        setEducationalContent(data);
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Error:', error);
+        setIsLoading(false);
+      }
+    };
+
+    fetchEducationContent();
+  }, []);
   
   // Filter content based on category and search query
   const filteredContent = educationalContent.filter(item => {
