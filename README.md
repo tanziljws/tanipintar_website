@@ -1,4 +1,4 @@
-# 🌾 TaniPintar - SmartFarm Connect
+# 🌾 TaniPintar - Website
 
 <div align="center">
   
