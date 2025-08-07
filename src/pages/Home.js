@@ -155,9 +155,9 @@ const Home = () => {
           />
           <div className="absolute inset-0 bg-green-700 opacity-60" aria-hidden="true"></div>
         </div>
-        <div className="relative max-w-7xl mx-auto py-16 px-4 sm:py-24 md:py-28 lg:py-32 sm:px-6 lg:px-8">
-          <div className="animate-fade-in-up">
-            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl mb-4 sm:mb-6">
+        <div className="relative w-full max-w-7xl mx-auto py-12 px-4 sm:py-20 md:py-24 lg:py-32 sm:px-6 lg:px-8">
+          <div className="animate-fade-in-up max-w-lg mx-auto lg:max-w-none">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 text-center lg:text-left">
               <span className="block opacity-0 animate-fade-in-up" style={{animationDelay: '0.3s', animationFillMode: 'forwards'}}>
                 Jadilah penentu kemajuan
               </span>
@@ -168,13 +168,13 @@ const Home = () => {
                 inovasi dan teknologi digital.
               </span>
             </h1>
-            <p className="mt-6 text-xl text-white max-w-3xl opacity-0 animate-fade-in-up" style={{animationDelay: '1.2s', animationFillMode: 'forwards'}}>
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl text-white max-w-3xl mx-auto lg:mx-0 opacity-0 animate-fade-in-up text-center lg:text-left" style={{animationDelay: '1.2s', animationFillMode: 'forwards'}}>
               Aplikasi publik untuk mendekatkan petani dan masyarakat demi ketahanan pangan.
             </p>
-            <div className="mt-6 sm:mt-8 md:mt-10 flex flex-wrap gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
+            <div className="mt-6 sm:mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 opacity-0 animate-fade-in-up" style={{animationDelay: '1.5s', animationFillMode: 'forwards'}}>
               <Link
                 to="/peta"
-                className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-lg text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform transition-transform duration-300 hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-lg text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform transition-transform duration-300 hover:scale-105"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
@@ -183,7 +183,7 @@ const Home = () => {
               </Link>
               <Link
                 to="/kontak"
-                className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-lg text-primary bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform transition-transform duration-300 hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center px-4 py-2 sm:px-6 sm:py-3 border border-transparent text-sm sm:text-base font-medium rounded-md shadow-lg text-primary bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transform transition-transform duration-300 hover:scale-105"
               >
                 <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -193,35 +193,35 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce hidden sm:block">
+          <svg className="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
           </svg>
         </div>
       </div>
 
       {/* Stats Section */}
-      <div id="stats-section" ref={statsRef} className="bg-white py-16">
+      <div id="stats-section" ref={statsRef} className="bg-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900">Statistik TaniPintar</h2>
-            <p className="mt-4 text-lg text-gray-600">Bergabunglah dengan ribuan pengguna yang telah memanfaatkan platform kami</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900">Statistik TaniPintar</h2>
+            <p className="mt-3 sm:mt-4 text-base sm:text-lg text-gray-600 px-4">Bergabunglah dengan ribuan pengguna yang telah memanfaatkan platform kami</p>
           </div>
-          <div className="grid grid-cols-1 gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-4">
             {stats.map((stat) => (
               <div 
                 key={stat.id} 
-                className={`bg-white overflow-hidden shadow-lg rounded-xl transition-all duration-500 transform hover:scale-105 hover:shadow-2xl ${isVisible['stats-section'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+                className={`bg-white overflow-hidden shadow-md sm:shadow-lg rounded-xl transition-all duration-500 transform hover:scale-105 hover:shadow-xl ${isVisible['stats-section'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
                 style={{ transitionDelay: `${(stat.id - 1) * 150}ms` }}
               >
-                <div className="px-4 py-5 sm:p-6">
-                  <div className="flex items-center justify-center mb-4">
-                    <div className="p-3 rounded-full bg-primary-light bg-opacity-20">
+                <div className="px-3 py-4 sm:px-4 sm:py-5">
+                  <div className="flex items-center justify-center mb-3 sm:mb-4">
+                    <div className="p-2 sm:p-3 rounded-full bg-primary-light bg-opacity-20">
                       {stat.icon}
                     </div>
                   </div>
-                  <dt className="text-center text-sm font-medium text-gray-500 truncate">{stat.name}</dt>
-                  <dd className="mt-2 text-center text-4xl font-extrabold text-primary">{stat.value}</dd>
+                  <dt className="text-center text-xs sm:text-sm font-medium text-gray-500 truncate">{stat.name}</dt>
+                  <dd className="mt-1 sm:mt-2 text-center text-2xl sm:text-3xl lg:text-4xl font-extrabold text-primary">{stat.value}</dd>
                 </div>
               </div>
             ))}
@@ -230,14 +230,14 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-      <div id="about-section" ref={aboutRef} className="bg-gray-50 py-20 sm:py-28 overflow-hidden">
+      <div id="about-section" ref={aboutRef} className="bg-gray-50 py-12 sm:py-20 lg:py-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 gap-8 md:gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
+          <div className="grid grid-cols-1 gap-6 sm:gap-8 md:gap-10 lg:grid-cols-2 lg:gap-12 lg:items-center">
             <div className={`transition-all duration-1000 transform ${isVisible['about-section'] ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-              <h2 className="text-3xl font-extrabold text-gray-900 sm:text-4xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-green-600">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-center lg:text-left text-gray-900 bg-clip-text text-transparent bg-gradient-to-r from-primary to-green-600">
                 Apa itu TaniPintar?
               </h2>
-              <p className="mt-4 max-w-3xl text-lg text-gray-600 leading-relaxed">
+              <p className="mt-4 max-w-3xl text-base sm:text-lg text-gray-600 leading-relaxed text-center lg:text-left">
                 TaniPintar adalah platform inovatif yang menghubungkan petani dengan masyarakat umum, pembeli, dan pemerintah untuk membangun ekosistem pertanian yang lebih baik dan berkelanjutan.
               </p>
               <div className="mt-10 space-y-6">
@@ -301,14 +301,14 @@ const Home = () => {
 
 
       {/* Mobile App Showcase Section */}
-      <div id="features-section" ref={featuresRef} className="bg-white py-20 sm:py-28 overflow-hidden">
+      <div id="features-section" ref={featuresRef} className="bg-white py-12 sm:py-20 lg:py-28 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className={`text-center transition-all duration-700 transform ${isVisible['features-section'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <span className="inline-block bg-primary-light text-primary text-sm font-semibold py-1 px-3 rounded-full mb-3">Mobile App</span>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 sm:tracking-tight">
+            <span className="inline-block bg-primary-light text-primary text-xs sm:text-sm font-semibold py-1 px-3 rounded-full mb-3">Mobile App</span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-900 sm:tracking-tight">
               TaniPintar di Genggaman Anda
             </h2>
-            <p className="max-w-2xl mt-5 mx-auto text-xl text-gray-600">
+            <p className="max-w-2xl mt-3 sm:mt-5 mx-auto text-base sm:text-lg lg:text-xl text-gray-600 px-4">
               Akses fitur pertanian pintar melalui Aplikasi Mobile yang terintegrasi dengan IoT
             </p>
           </div>
@@ -404,23 +404,23 @@ const Home = () => {
       {/* CTA Section */}
       <div id="cta-section" ref={ctaRef} className="bg-gradient-to-r from-primary to-green-700 relative overflow-hidden">
         {/* Decorative elements */}
-        <div className="absolute top-0 left-0 w-40 h-40 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-60 h-60 bg-white opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
+        <div className="absolute top-0 left-0 w-32 sm:w-40 h-32 sm:h-40 bg-white opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-48 sm:w-60 h-48 sm:h-60 bg-white opacity-10 rounded-full translate-x-1/3 translate-y-1/3"></div>
         
-        <div className="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto py-12 sm:py-16 lg:py-24 px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8 lg:items-center">
             <div className={`transition-all duration-1000 transform ${isVisible['cta-section'] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-              <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl mb-6">
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-white mb-4 sm:mb-6 text-center lg:text-left">
                 <span className="block mb-2">Siap untuk bergabung?</span>
                 <span className="block text-green-100">Mulai gunakan TaniPintar sekarang.</span>
               </h2>
-              <p className="text-lg text-white text-opacity-90 mb-8">
+              <p className="text-base sm:text-lg text-white text-opacity-90 mb-6 sm:mb-8 text-center lg:text-left">
                 Jadilah bagian dari revolusi pertanian digital Indonesia dan bantu petani lokal meningkatkan produktivitas mereka.
               </p>
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Link
                   to="/peta"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-50 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
@@ -429,7 +429,7 @@ const Home = () => {
                 </Link>
                 <Link
                   to="/kontak"
-                  className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-800 hover:bg-green-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-800 hover:bg-green-900 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
                 >
                   <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
@@ -439,14 +439,14 @@ const Home = () => {
               </div>
             </div>
             <div className={`mt-12 lg:mt-0 transition-all duration-1000 transform ${isVisible['cta-section'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="bg-white bg-opacity-10 p-6 rounded-2xl backdrop-blur-sm">
-                <div className="grid grid-cols-2 gap-4">
+              <div className="bg-white bg-opacity-10 p-4 sm:p-6 rounded-2xl backdrop-blur-sm">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {[
                     {
                       title: 'Petani Terdaftar',
                       value: '10,766+',
                       icon: (
-                        <svg className="h-8 w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="h-6 w-6 sm:h-8 sm:w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                       )
@@ -455,7 +455,7 @@ const Home = () => {
                       title: 'Komoditas',
                       value: '125+',
                       icon: (
-                        <svg className="h-8 w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="h-6 w-6 sm:h-8 sm:w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                         </svg>
                       )
@@ -464,7 +464,7 @@ const Home = () => {
                       title: 'Provinsi',
                       value: '5+',
                       icon: (
-                        <svg className="h-8 w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="h-6 w-6 sm:h-8 sm:w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                       )
@@ -473,18 +473,20 @@ const Home = () => {
                       title: 'Transaksi',
                       value: '1,250+',
                       icon: (
-                        <svg className="h-8 w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="h-6 w-6 sm:h-8 sm:w-8 text-green-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       )
                     }
                   ].map((item, index) => (
-                    <div key={index} className="bg-white bg-opacity-10 p-4 rounded-xl hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105">
-                      <div className="flex items-center mb-2">
-                        {item.icon}
-                        <h3 className="ml-3 text-lg font-medium text-white">{item.title}</h3>
+                    <div key={index} className="bg-white bg-opacity-10 p-3 sm:p-4 rounded-xl hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left">
+                        <div className="mb-2 sm:mb-0 sm:mr-3">{item.icon}</div>
+                        <div>
+                          <h3 className="text-sm sm:text-base lg:text-lg font-medium text-white">{item.title}</h3>
+                          <p className="text-xl sm:text-2xl font-bold text-white mt-1">{item.value}</p>
+                        </div>
                       </div>
-                      <p className="text-2xl font-bold text-white">{item.value}</p>
                     </div>
                   ))}
                 </div>
