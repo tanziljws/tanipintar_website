@@ -154,7 +154,7 @@ const Contact = () => {
   const faqs = [
     {
       question: 'Bagaimana cara mendaftar sebagai petani di TaniPintar?',
-      answer: 'Untuk mendaftar sebagai petani, Anda perlu mengisi formulir pendaftaran yang tersedia di halaman "Daftar" dan melengkapi verifikasi data yang diperlukan. Tim kami akan menghubungi Anda untuk proses selanjutnya.',
+      answer: 'Untuk mendaftar sebagai petani, Anda perlu menginstall aplikasi TaniPintar lalu daftar di Aplikasi. Setelah itu, Anda dapat mengisi profil Anda dengan informasi yang diperlukan seperti nama, lokasi, dan jenis tanaman yang Anda tanam. Tim kami akan memverifikasi pendaftaran Anda sebelum profil Anda ditampilkan di peta sebaran.',
     },
     {
       question: 'Apakah aplikasi ini gratis untuk digunakan?',
@@ -162,50 +162,17 @@ const Contact = () => {
     },
     {
       question: 'Bagaimana cara menghubungi petani melalui aplikasi ini?',
-      answer: 'Anda dapat menghubungi petani dengan mengklik tombol "Hubungi Petani" yang tersedia di profil mereka pada peta sebaran. Anda juga dapat menggunakan formulir kontak di halaman ini untuk mengirim pesan kepada tim kami.',
+      answer: 'Anda dapat menggunakan formulir kontak di halaman ini untuk mengirim pesan kepada tim kami.',
     },
     {
       question: 'Wilayah mana saja yang sudah tercakup dalam aplikasi TaniPintar?',
-      answer: 'Saat ini, TaniPintar telah mencakup 5 provinsi utama di Indonesia, termasuk DKI Jakarta, Jawa Barat, Jawa Tengah, DI Yogyakarta, dan Jawa Timur. Kami terus berupaya untuk memperluas jangkauan ke seluruh wilayah Indonesia.',
+      answer: 'Saat ini, TaniPintar baru mencakup wilayah Jawa Barat, tepatnya di Bogor. Kami terus berupaya untuk memperluas jangkauan ke seluruh wilayah Indonesia.',
     },
   ];
   
-  // Farmer illustration SVG component
-  const FarmerIllustration = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" className="w-full h-full">
-      <g id="farmer">
-        <path d="M250,120c33.1,0,60-26.9,60-60s-26.9-60-60-60s-60,26.9-60,60S216.9,120,250,120z" fill="#F8D0A0" />
-        <path d="M310,70c0-33.1-26.9-60-60-60v120C283.1,130,310,103.1,310,70z" fill="#EABD8C" />
-        <path d="M330,180v-30c0-44.1-35.9-80-80-80s-80,35.9-80,80v30l20,20h120L330,180z" fill="#4CAF50" />
-        <path d="M330,180v-30c0-44.1-35.9-80-80-80v130h60L330,180z" fill="#388E3C" />
-        <path d="M250,340l-70-50v-90h140v90L250,340z" fill="#4CAF50" />
-        <path d="M320,200v90l-70,50v-140H320z" fill="#388E3C" />
-        <path d="M320,200H180c-16.6,0-30-13.4-30-30h200C350,186.6,336.6,200,320,200z" fill="#795548" />
-        <path d="M350,170H250v30h70C336.6,200,350,186.6,350,170z" fill="#5D4037" />
-        <path d="M250,340v160h-40l-10-120l-10,120h-40V340c0-27.6,22.4-50,50-50S250,312.4,250,340z" fill="#1976D2" />
-        <path d="M250,340v160h40l10-120l10,120h40V340c0-27.6-22.4-50-50-50S250,312.4,250,340z" fill="#1565C0" />
-        <path d="M250,290v210h40l10-120l10,120h40V340c0-27.6-22.4-50-50-50S250,312.4,250,290z" fill="#1565C0" />
-        <path d="M190,200v40h-30v40h30v60h120v-60h30v-40h-30v-40H190z" fill="#FBC02D" />
-        <path d="M310,200v40h30v40h-30v60H250V200H310z" fill="#F9A825" />
-        <path d="M190,70h120v30H190V70z" fill="#8D6E63" />
-        <path d="M250,70h60v30h-60V70z" fill="#6D4C41" />
-        <path d="M250,70c0,0-30-20-30,10s30,10,30,10s30-20,30,10s-30,10-30,10" fill="#F8D0A0" />
-        <path d="M250,70c0,0,30-20,30,10s-30,10-30,10" fill="#EABD8C" />
-        <circle cx="220" cy="60" r="10" fill="#212121" />
-        <circle cx="280" cy="60" r="10" fill="#212121" />
-        <path d="M260,85c0,5.5-4.5,10-10,10s-10-4.5-10-10H260z" fill="#F44336" />
-      </g>
-      <g id="plants">
-        <path d="M150,380c0,0-20-30-20-60s20-30,20-30s20,0,20,30S150,380,150,380z" fill="#4CAF50" />
-        <path d="M150,380c0,0,20-30,20-60s-20-30-20-30" fill="#388E3C" />
-        <path d="M100,400c0,0-15-20-15-40s15-20,15-20s15,0,15,20S100,400,100,400z" fill="#4CAF50" />
-        <path d="M100,400c0,0,15-20,15-40s-15-20-15-20" fill="#388E3C" />
-        <path d="M400,400c0,0-15-20-15-40s15-20,15-20s15,0,15,20S400,400,400,400z" fill="#4CAF50" />
-        <path d="M400,400c0,0,15-20,15-40s-15-20-15-20" fill="#388E3C" />
-        <path d="M350,380c0,0-20-30-20-60s20-30,20-30s20,0,20,30S350,380,350,380z" fill="#4CAF50" />
-        <path d="M350,380c0,0,20-30,20-60s-20-30-20-30" fill="#388E3C" />
-      </g>
-    </svg>
+  // Logo component
+  const LogoImage = () => (
+    <img src={require('../assets/images/logo.png')} alt="TaniPintar Logo" className="w-full h-full object-contain" />
   );
 
   return (
@@ -226,7 +193,7 @@ const Contact = () => {
         <div className="rounded-2xl overflow-hidden shadow-xl bg-white mb-16" ref={contactSectionRef}>
           <div className="bg-primary bg-opacity-90 p-6 sm:p-10 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
-              <FarmerIllustration />
+              <LogoImage />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Hubungi Kami</h2>
             <p className="max-w-md text-sm sm:text-base">Kami siap membantu Anda. Silakan isi formulir di bawah ini dan kami akan segera menghubungi Anda.</p>
@@ -278,7 +245,7 @@ const Contact = () => {
                 
                 <div className="mt-8 sm:mt-10 relative h-32 sm:h-40 md:h-60 overflow-hidden rounded-lg">
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <FarmerIllustration />
+                    <LogoImage />
                   </div>
                 </div>
               </div>
@@ -405,7 +372,7 @@ const Contact = () => {
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-16" ref={faqRef}>
           <div className="bg-primary bg-opacity-90 p-6 sm:p-10 text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-1/2 h-full opacity-10">
-              <FarmerIllustration />
+              <LogoImage />
             </div>
             <h2 className="text-2xl sm:text-3xl font-bold mb-1 sm:mb-2">Pertanyaan Umum (FAQ)</h2>
             <p className="max-w-md text-sm sm:text-base">Temukan jawaban untuk pertanyaan yang sering diajukan tentang TaniPintar.</p>

@@ -55,7 +55,6 @@ const MapPage = () => {
       location: 'Jakarta Selatan, DKI Jakarta',
       district: 'Jakarta Selatan',
       status: 'Siap Panen',
-      contact: '08123456789',
       image: 'https://images.unsplash.com/photo-1536657464919-892534f60d6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       category: 'Organik'
     },
@@ -68,7 +67,6 @@ const MapPage = () => {
       location: 'Semarang, Jawa Tengah',
       district: 'Semarang',
       status: 'Masa Tanam',
-      contact: '08234567890',
       image: 'https://images.unsplash.com/photo-1551754655-cd27e38d2076?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       category: 'Non-Organik'
     },
@@ -81,7 +79,6 @@ const MapPage = () => {
       location: 'Sleman, DI Yogyakarta',
       district: 'Sleman',
       status: 'Siap Panen',
-      contact: '08345678901',
       image: 'https://images.unsplash.com/photo-1574316071802-0d684efa7bf5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       category: 'Organik'
     },
@@ -94,7 +91,6 @@ const MapPage = () => {
       location: 'Bandung, Jawa Barat',
       district: 'Bandung',
       status: 'Perawatan',
-      contact: '08456789012',
       image: 'https://images.unsplash.com/photo-1553279768-865429fa0078?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       category: 'Non-Organik'
     },
@@ -107,7 +103,6 @@ const MapPage = () => {
       location: 'Surabaya, Jawa Timur',
       district: 'Surabaya',
       status: 'Siap Panen',
-      contact: '08567890123',
       image: 'https://images.unsplash.com/photo-1536657464919-892534f60d6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60',
       category: 'Organik'
     },
@@ -405,7 +400,6 @@ const MapPage = () => {
                             <div className="mt-2">
                               <p className="flex items-center"><span className="mr-1">🌾</span> <span className="font-semibold">Komoditas:</span> {farmer.commodityName}</p>
                               <p className="flex items-center"><span className="mr-1">📦</span> <span className="font-semibold">Status:</span> {farmer.status}</p>
-                              <p className="flex items-center"><span className="mr-1">📞</span> <span className="font-semibold">Kontak:</span> {farmer.contact}</p>
                             </div>
                             <button className="mt-3 w-full bg-primary text-white py-1 px-3 rounded-md text-sm hover:bg-primary-dark transition-colors duration-300">
                               Hubungi Petani
@@ -421,7 +415,6 @@ const MapPage = () => {
               {/* Farmer Distribution Chart */}
               <div className="bg-white p-6 rounded-lg shadow-md mt-6">
                 <h2 className="text-xl font-bold mb-4">Infografis Data</h2>
-                {error && <p className="text-red-500 mb-4">{error}</p>}
                 <div className="h-[350px] w-full">
                   {isLoading ? (
                     <div className="h-full flex items-center justify-center">

@@ -77,13 +77,27 @@ const AdminEducationPage = () => {
     const handleUpdateContent = async (e) => {
         e.preventDefault();
         try {
+            // Make sure we have the ID
+            if (!selectedContent?.id) {
+                throw new Error('No content ID found');
+            }
+
             const response = await fetch(`http://localhost:3001/api/education/${selectedContent.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
                 },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({
+                    title: formData.title,
+                    content: formData.content,
+                    image_url: formData.image_url,
+                    category: formData.category,
+                    author: formData.author,
+                    read_time: formData.read_time,
+                    featured: formData.featured,
+                    is_video: formData.is_video
+                })
             });
 
             if (!response.ok) {
@@ -169,13 +183,13 @@ const AdminEducationPage = () => {
                         {educationContent.map((content) => (
                             <div key={content.id} className="bg-white rounded-lg shadow-md overflow-hidden">
                                 <img
-                                    src={content.image}
+                                    src={content.image_url || content.image}
                                     alt={content.title}
                                     className="w-full h-48 object-cover"
                                 />
                                 <div className="p-4">
                                     <h3 className="text-lg font-semibold mb-2">{content.title}</h3>
-                                    <p className="text-gray-600 mb-4 line-clamp-3">{content.description}</p>
+                                    <p className="text-gray-600 mb-4 line-clamp-3">{content.content || content.description}</p>
                                     <div className="flex justify-between items-center">
                                         <span className="text-sm text-gray-500">{content.category}</span>
                                         <div className="space-x-2">
@@ -184,13 +198,13 @@ const AdminEducationPage = () => {
                                                     setSelectedContent(content);
                                                     setFormData({
                                                         title: content.title,
-                                                        content: content.description,
-                                                        image_url: content.image,
+                                                        content: content.content || content.description,
+                                                        image_url: content.image_url || content.image,
                                                         category: content.category,
                                                         author: content.author,
-                                                        read_time: content.readTime,
-                                                        featured: content.featured,
-                                                        is_video: content.isVideo
+                                                        read_time: content.read_time || content.readTime,
+                                                        featured: content.featured || false,
+                                                        is_video: content.is_video || content.isVideo || false
                                                     });
                                                     setShowModal(true);
                                                 }}
@@ -214,108 +228,108 @@ const AdminEducationPage = () => {
 
                 {/* Add/Edit Modal */}
                 {showModal && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                        <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
-                            <h2 className="text-xl font-bold mb-4">
+                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-start justify-center overflow-y-auto py-10">
+                        <div className="bg-white rounded-lg p-8 w-full max-w-3xl mx-4 my-auto">
+                            <h2 className="text-xl font-bold mb-6">
                                 {selectedContent ? 'Edit Content' : 'Add New Content'}
                             </h2>
                             <form onSubmit={selectedContent ? handleUpdateContent : handleCreateContent}>
-                                <div className="space-y-4">
+                                <div className="space-y-6">
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Title</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Title</label>
                                         <input
                                             type="text"
                                             value={formData.title}
                                             onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                                            className="w-full p-2 border rounded"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Content</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Content</label>
                                         <textarea
                                             value={formData.content}
                                             onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                                            className="w-full p-2 border rounded h-32"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 h-40"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Image URL</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Image URL</label>
                                         <input
                                             type="url"
                                             value={formData.image_url}
                                             onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-                                            className="w-full p-2 border rounded"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Category</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                                         <select
                                             value={formData.category}
                                             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                                            className="w-full p-2 border rounded"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500 bg-white"
                                         >
-                                            <option value="farming">Teknik Bertani</option>
-                                            <option value="sustainable">Pertanian Berkelanjutan</option>
-                                            <option value="market">Wawasan Pasar</option>
-                                            <option value="video">Video Tutorial</option>
+                                            <option value="Teknik Bertani">Teknik Bertani</option>
+                                            <option value="Pertanian Berkelanjutan">Pertanian Berkelanjutan</option>
+                                            <option value="Wawasan Pasar">Wawasan Pasar</option>
+                                            <option value="Video Tutorial">Video Tutorial</option>
                                         </select>
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Author</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Author</label>
                                         <input
                                             type="text"
                                             value={formData.author}
                                             onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                                            className="w-full p-2 border rounded"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
                                             required
                                         />
                                     </div>
                                     <div>
-                                        <label className="block text-sm font-medium mb-1">Read Time</label>
+                                        <label className="block text-sm font-medium text-gray-700 mb-2">Read Time</label>
                                         <input
                                             type="text"
                                             value={formData.read_time}
                                             onChange={(e) => setFormData({ ...formData, read_time: e.target.value })}
-                                            className="w-full p-2 border rounded"
+                                            className="w-full p-3 border border-gray-300 rounded-md shadow-sm focus:ring-green-500 focus:border-green-500"
                                             required
                                             placeholder="e.g., 5 menit"
                                         />
                                     </div>
-                                    <div className="flex items-center space-x-4">
-                                        <label className="flex items-center">
+                                    <div className="flex items-center space-x-6">
+                                        <label className="flex items-center space-x-2 text-sm text-gray-700">
                                             <input
                                                 type="checkbox"
                                                 checked={formData.featured}
                                                 onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                                                className="mr-2"
+                                                className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
                                             />
-                                            Featured
+                                            <span>Featured</span>
                                         </label>
-                                        <label className="flex items-center">
+                                        <label className="flex items-center space-x-2 text-sm text-gray-700">
                                             <input
                                                 type="checkbox"
                                                 checked={formData.is_video}
                                                 onChange={(e) => setFormData({ ...formData, is_video: e.target.checked })}
-                                                className="mr-2"
+                                                className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
                                             />
-                                            Is Video
+                                            <span>Is Video</span>
                                         </label>
                                     </div>
                                 </div>
-                                <div className="flex justify-end space-x-2 mt-6">
+                                <div className="flex justify-end space-x-4 mt-8 pt-6 border-t">
                                     <button
                                         type="button"
                                         onClick={() => setShowModal(false)}
-                                        className="px-4 py-2 border rounded text-gray-600 hover:bg-gray-100"
+                                        className="px-6 py-3 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                     >
                                         Cancel
                                     </button>
                                     <button
                                         type="submit"
-                                        className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                                        className="px-6 py-3 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
                                     >
                                         {selectedContent ? 'Update Content' : 'Add Content'}
                                     </button>

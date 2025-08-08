@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">TaniPintar</h3>
             <p className="text-gray-300 mb-4">
-              Aplikasi publik untuk mendekatkan petani dan masyarakat demi ketahanan pangan.
+              Inovasi Pertanian Pintar Terintegrasi Aplikasi Publik Untuk Ketahanan Pangan Berkelanjutan.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-white">
@@ -40,6 +40,9 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/peta" className="text-gray-300 hover:text-white">Peta Sebaran</Link>
+              </li>
+              <li>
+                <Link to="/edukasi" className="text-gray-300 hover:text-white">Edukasi</Link>
               </li>
               <li>
                 <Link to="/kontak" className="text-gray-300 hover:text-white">Kontak</Link>

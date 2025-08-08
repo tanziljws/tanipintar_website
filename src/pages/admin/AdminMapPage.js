@@ -245,10 +245,6 @@ const AdminMapPage = () => {
                                                 Delete
                                             </button>
                                         </div>
-                                        <div className="text-xs text-gray-500">
-                                            <div>Lat: {farmer.latitude}</div>
-                                            <div>Long: {farmer.longitude}</div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
