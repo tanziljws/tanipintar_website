@@ -74,6 +74,15 @@ const Navbar = () => {
               )}
             </Link>
             <Link 
+              to="/galeri" 
+              className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-primary ${location.pathname === '/galeri' ? 'text-primary' : 'text-gray-700'}`}
+            >
+              <span>Galeri</span>
+              {location.pathname === '/galeri' && (
+                <span className="absolute bottom-0 left-0 w-full h-0.5 bg-primary transform transition-transform duration-300"></span>
+              )}
+            </Link>
+            <Link 
               to="/kontak" 
               className={`relative px-3 py-2 text-sm font-medium transition-colors duration-300 hover:text-primary ${location.pathname === '/kontak' ? 'text-primary' : 'text-gray-700'}`}
             >
@@ -117,6 +126,18 @@ const Navbar = () => {
             className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${location.pathname === '/peta' ? 'bg-primary-50 text-primary' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'}`}
           >
             Peta Sebaran
+          </Link>
+          <Link 
+            to="/edukasi" 
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${location.pathname === '/edukasi' ? 'bg-primary-50 text-primary' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'}`}
+          >
+            Edukasi
+          </Link>
+          <Link 
+            to="/galeri" 
+            className={`block px-3 py-2 rounded-md text-base font-medium transition-colors duration-300 ${location.pathname === '/galeri' ? 'bg-primary-50 text-primary' : 'text-gray-700 hover:bg-gray-50 hover:text-primary'}`}
+          >
+            Galeri
           </Link>
           <Link 
             to="/kontak" 

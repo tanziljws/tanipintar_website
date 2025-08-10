@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import MapPage from './pages/MapPage';
 import Contact from './pages/Contact';
 import Education from './pages/Education';
+import Gallery from './pages/Gallery';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
 import AddEducationContent from './pages/AddEducationContent';
@@ -30,6 +31,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/peta" element={<MapPage />} />
             <Route path="/edukasi" element={<Education />} />
+            <Route path="/galeri" element={<Gallery />} />
             <Route path="/kontak" element={<Contact />} />
             <Route path="/admin/login" element={<AdminLogin />} />
             
