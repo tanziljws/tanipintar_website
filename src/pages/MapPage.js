@@ -540,7 +540,7 @@ const MapPage = () => {
 
   return (
     <div className="bg-gradient-to-b from-green-50 to-white min-h-screen">
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-8 sm:py-10 md:py-12">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12">
         <div className="text-center mb-8 sm:mb-12">
           <h1 className="text-3xl font-extrabold text-gray-900 sm:text-4xl md:text-5xl relative inline-block">
             <span className="relative z-10 text-gradient">Peta Sebaran</span>
@@ -676,7 +676,7 @@ const MapPage = () => {
               <div className="flex items-center justify-between mb-6">
                 <div>
                   <h2 className="text-lg font-semibold text-gray-900">Filter</h2>
-                  <p className="text-sm text-gray-500 mt-1">Sesuaikan pencarian</p>
+                  <p className="xsm text-gray-500 mt-1">Sesuaikan pencarian</p>
                 </div>
                 <span className="bg-green-100 text-green-700 text-xs font-medium px-2.5 py-1 rounded-full">
                   Pintar
@@ -685,7 +685,6 @@ const MapPage = () => {
               
               {/* Search */}
               <div className="mb-5">
-                <label className="block text-sm font-medium text-gray-700 mb-2">Kata Kunci</label>
                 <div className="relative">
                   <input
                     type="text"
@@ -1119,11 +1118,11 @@ const MapPage = () => {
                     </div>
                   </div>
                   
-                  <div className="p-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                  <div className="p-8">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                       {filteredFarmers.map((farmer) => (
-                        <div key={farmer.id} className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-xl hover:border-green-200 transition-all duration-300">
-                          <div className="relative h-48 overflow-hidden">
+                        <div key={farmer.id} className="group bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg hover:border-green-200 transition-all duration-300 hover:transform hover:-translate-y-1 flex flex-col h-[360px]">
+                          <div className="relative h-40 overflow-hidden">
                             <img 
                               src={farmer.image} 
                               alt={farmer.commodityName} 
@@ -1148,15 +1147,15 @@ const MapPage = () => {
                             </div>
                           </div>
                           
-                          <div className="p-5">
-                            <div className="mb-3">
+                          <div className="p-4 flex-1 flex flex-col">
+                            <div className="mb-2">
                               <h3 className="font-bold text-gray-900 text-lg mb-1 group-hover:text-green-600 transition-colors duration-300 line-clamp-1">
                                 {farmer.commodityName}
                               </h3>
                               <p className="text-sm text-gray-600 font-medium line-clamp-1">{farmer.name}</p>
                             </div>
                             
-                            <div className="space-y-3">
+                            <div className="space-y-2 mt-auto">
                               <div className="flex items-center text-sm text-gray-600">
                                 <svg className="w-4 h-4 mr-2 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
