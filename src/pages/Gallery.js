@@ -19,6 +19,12 @@ const Gallery = () => {
             title: 'Perangkat TaniPintar di Lapangan',
             description: 'Penerapan teknologi IoT TaniPintar pada area pertanian',
             imageUrl: '/assets/iot/dua.jpg'
+        },
+        {
+            id: 4,
+            title: 'Perangkat TaniPintar Pompa',
+            description: 'Contoh pemasangan pompa otomatis berbasis IoT untuk penyiraman otomatis',
+            imageUrl: '/assets/iot/empat.jpg'
         }
     ];
 

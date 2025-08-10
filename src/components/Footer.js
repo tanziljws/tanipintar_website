@@ -45,6 +45,9 @@ const Footer = () => {
                 <Link to="/edukasi" className="text-gray-300 hover:text-white">Edukasi</Link>
               </li>
               <li>
+                <Link to="/galeri" className="text-gray-300 hover:text-white">Galeri</Link>
+              </li>
+              <li>
                 <Link to="/kontak" className="text-gray-300 hover:text-white">Kontak</Link>
               </li>
             </ul>
