@@ -30,7 +30,9 @@ function App() {
       <ToastProvider>
         <div className="flex flex-col min-h-screen">
           <Navbar />
-          <Breadcrumb />
+          <div className="pt-20">
+            <Breadcrumb />
+          </div>
           <main className="flex-grow">
             <Routes>
             <Route path="/" element={<Home />} />

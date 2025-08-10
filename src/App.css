@@ -7,6 +7,17 @@
   z-index: 1;
 }
 
+/* Navbar offset for fixed positioning */
+.navbar-offset {
+  padding-top: var(--navbar-height, 4rem);
+}
+
+/* Page layout */
+.page-container {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 /* Custom animations */
 @keyframes fadeIn {
   from {
