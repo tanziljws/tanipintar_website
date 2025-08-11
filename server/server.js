@@ -9,12 +9,7 @@ const app = express();
 const port = process.env.PORT || 3001;
 
 // Middleware
-app.use(cors({
-    origin: 'http://localhost:3000', // Frontend URL
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());  // This will allow all origins in development
 app.use(express.json());
 
 // Test route

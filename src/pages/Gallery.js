@@ -25,6 +25,18 @@ const Gallery = () => {
             title: 'Perangkat TaniPintar Pompa',
             description: 'Contoh pemasangan pompa otomatis berbasis IoT untuk penyiraman otomatis',
             imageUrl: '/assets/iot/empat.jpg'
+        },
+        {
+            id: 5,
+            title: 'TaniPintar Mobile',
+            description: 'Contoh aplikasi mobile TaniPintar untuk monitoring lahan pertanian',
+            imageUrl: '/assets/iot/lima.jpg'
+        },
+        {
+            id: 6,
+            title: 'TaniPintar Mobile',
+            description: 'Contoh aplikasi mobile TaniPintar untuk analitik lahan pertanian',
+            imageUrl: '/assets/iot/enam.jpg'
         }
     ];
 
