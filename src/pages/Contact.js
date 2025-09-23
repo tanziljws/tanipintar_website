@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -33,12 +32,15 @@ const Contact = () => {
       { threshold: 0.1 }
     );
 
-    if (contactSectionRef.current) observer.observe(contactSectionRef.current);
-    if (faqRef.current) observer.observe(faqRef.current);
+    const contactSection = contactSectionRef.current;
+    const faq = faqRef.current;
+
+    if (contactSection) observer.observe(contactSection);
+    if (faq) observer.observe(faq);
 
     return () => {
-      if (contactSectionRef.current) observer.unobserve(contactSectionRef.current);
-      if (faqRef.current) observer.unobserve(faqRef.current);
+      if (contactSection) observer.unobserve(contactSection);
+      if (faq) observer.unobserve(faq);
     };
   }, []);
 

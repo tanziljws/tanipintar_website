@@ -65,7 +65,6 @@ const AnimatedCounter = ({ value, duration = 1000, decimals = 0 }) => {
 };
 
 const MapPage = () => {
-  const [activeFilter, setActiveFilter] = useState('all');
   const [sortOption, setSortOption] = useState('terbaru');
   const [selectedDistrict, setSelectedDistrict] = useState('');
   const [selectedCommodityType, setSelectedCommodityType] = useState('');
@@ -74,13 +73,10 @@ const MapPage = () => {
   const [showGallery, setShowGallery] = useState(true);
   const [farmers, setFarmers] = useState([]);
   const [districtDistribution, setDistrictDistribution] = useState([]);
-  const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedProvince, setSelectedProvince] = useState('all');
   const [organicFilter, setOrganicFilter] = useState('all');
-  const [harvestPeriod, setHarvestPeriod] = useState('all');
   const [showExportModal, setShowExportModal] = useState(false);
-  const [selectedTimeRange, setSelectedTimeRange] = useState('all');
   const [viewMode, setViewMode] = useState('map'); // 'map', 'table', 'analytics'
   
   // Fetch farmers data from API
@@ -97,7 +93,6 @@ const MapPage = () => {
         setIsLoading(false);
       } catch (err) {
         console.error('Error fetching farmers:', err);
-        setError('Failed to load farmers data. Using fallback data.');
         // Fallback to sample data if API fails
         setFarmers([
     {
@@ -209,9 +204,9 @@ const MapPage = () => {
   }, []);
 
   // Get unique districts, provinces, commodity types, and categories
-  const districts = [...new Set(farmers.map(f => f.district))];
+  const districts = useMemo(() => [...new Set(farmers.map(f => f.district))], [farmers]);
   const provinces = [...new Set(farmers.map(f => f.province))];
-  const commodityTypes = [...new Set(farmers.map(f => f.commodity))];
+  const commodityTypes = useMemo(() => [...new Set(farmers.map(f => f.commodity))], [farmers]);
   const categories = [...new Set(farmers.map(f => f.category))];
 
   // Apply filters
@@ -447,7 +442,6 @@ const MapPage = () => {
   };
   
   const resetFilters = () => {
-    setActiveFilter('all');
     setSortOption('terbaru');
     setSelectedDistrict('');
     setSelectedCommodityType('');
@@ -455,7 +449,6 @@ const MapPage = () => {
     setSearchQuery('');
     setSelectedProvince('all');
     setOrganicFilter('all');
-    setHarvestPeriod('all');
   };
 
   // Export functionality
@@ -1204,7 +1197,7 @@ const MapPage = () => {
                           Coba ubah filter pencarian atau pilih kategori yang berbeda untuk melihat komoditas yang tersedia.
                         </p>
                         <button 
-                          onClick={() => { setSearchQuery(''); setActiveFilter('all'); }}
+                          onClick={() => { setSearchQuery(''); }}
                           className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors duration-300"
                         >
                           Reset Filter

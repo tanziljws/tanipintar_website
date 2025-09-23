@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
@@ -23,40 +23,7 @@ const Home = () => {
     commodities: 125
   };
   
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible((prev) => ({
-              ...prev,
-              [entry.target.id]: true
-            }));
-            
-            // Start animation for stats when they come into view
-            if (entry.target.id === 'stats-section') {
-              animateStats();
-            }
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-    
-    if (statsRef.current) observer.observe(statsRef.current);
-    if (featuresRef.current) observer.observe(featuresRef.current);
-    if (aboutRef.current) observer.observe(aboutRef.current);
-    if (ctaRef.current) observer.observe(ctaRef.current);
-    
-    return () => {
-      if (statsRef.current) observer.unobserve(statsRef.current);
-      if (featuresRef.current) observer.unobserve(featuresRef.current);
-      if (aboutRef.current) observer.unobserve(aboutRef.current);
-      if (ctaRef.current) observer.unobserve(ctaRef.current);
-    };
-  }, []);
-  
-  const animateStats = () => {
+  const animateStats = useCallback(() => {
     const duration = 2000; // ms
     const steps = 60;
     const stepTime = duration / steps;
@@ -79,7 +46,45 @@ const Home = () => {
         clearInterval(interval);
       }
     }, stepTime);
-  };
+  }, [targetCounts.users, targetCounts.farmers, targetCounts.registrations, targetCounts.commodities]);
+  
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible((prev) => ({
+              ...prev,
+              [entry.target.id]: true
+            }));
+            
+            // Start animation for stats when they come into view
+            if (entry.target.id === 'stats-section') {
+              animateStats();
+            }
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    
+    const stats = statsRef.current;
+    const features = featuresRef.current;
+    const about = aboutRef.current;
+    const cta = ctaRef.current;
+    
+    if (stats) observer.observe(stats);
+    if (features) observer.observe(features);
+    if (about) observer.observe(about);
+    if (cta) observer.observe(cta);
+    
+    return () => {
+      if (stats) observer.unobserve(stats);
+      if (features) observer.unobserve(features);
+      if (about) observer.unobserve(about);
+      if (cta) observer.unobserve(cta);
+    };
+  }, [animateStats]);
   const stats = [
     { id: 1, name: 'Pengguna Terdaftar', value: counts.users.toString(), icon: (
       <svg className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -103,45 +108,6 @@ const Home = () => {
     ) },
   ];
 
-  const features = [
-    {
-      name: 'Pemetaan Petani',
-      description: 'Temukan lokasi petani terdekat dengan mudah melalui peta interaktif.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Informasi Komoditas',
-      description: 'Akses informasi lengkap tentang berbagai komoditas pertanian yang tersedia.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Koneksi Langsung',
-      description: 'Hubungi petani secara langsung untuk memenuhi kebutuhan hasil pertanian Anda.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-        </svg>
-      ),
-    },
-    {
-      name: 'Edukasi Pertanian',
-      description: 'Dapatkan informasi dan pengetahuan terbaru tentang praktik pertanian modern.',
-      icon: (
-        <svg className="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-        </svg>
-      ),
-    },
-  ];
 
   return (
     <div className="bg-white">
@@ -282,7 +248,7 @@ const Home = () => {
                 ))}
               </div>
             </div>
-            <div className="mt-8 md:mt-10 lg:mt-0 transition-all duration-1000 transform ${isVisible['about-section'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}">
+            <div className={`mt-8 md:mt-10 lg:mt-0 transition-all duration-1000 transform ${isVisible['about-section'] ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
               <div className="relative">
                 <img
                   className="rounded-2xl shadow-2xl w-full object-cover h-[500px] transition-transform duration-500 hover:scale-[1.02]"

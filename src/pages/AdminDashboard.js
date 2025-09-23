@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
     const [activeTab, setActiveTab] = useState('education');
     const [educationContent, setEducationContent] = useState([]);
     const [mapMarkers, setMapMarkers] = useState([]);
-    const navigate = useNavigate();
 
     const fetchEducationContent = async () => {
         try {
@@ -47,10 +46,10 @@ const AdminDashboard = () => {
         }
     }, [activeTab]);
 
-    const handleLogout = () => {
-        localStorage.removeItem('adminToken');
-        navigate('/admin/login');
-    };
+    // const handleLogout = () => {
+    //     localStorage.removeItem('adminToken');
+    //     navigate('/admin/login');
+    // };
 
     return (
         <div className="p-6">
